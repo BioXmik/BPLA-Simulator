@@ -30129,9 +30129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ed30bb8af172846adc57f394fd1242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnergy: 75000
-  energy: 75000
-  consumption: 21.2
+  maxEnergy: 500000
+  energy: 500000
+  consumption: 0
   procentEnergy: 0
   procentEnergyText: {fileID: 8030662044496689279}
   consumptionText: {fileID: 8030662044497341024}

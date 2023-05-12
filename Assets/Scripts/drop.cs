@@ -8,7 +8,7 @@ public class drop : MonoBehaviour
 	
 	public void DropCargo()
 	{
-		if (!GetComponent<Sensors>().killSwitch && GetComponent<battery>().energy > 0 && PlayerPrefs.GetFloat("Exercises") == 1)
+		if (!GetComponent<Sensors>().killSwitch && GetComponent<battery>().energy > 0)
 		{
 			GameObject newDrop = Instantiate(dropCargo, new Vector3(transform.position.x, transform.position.y -2f, transform.position.z), Quaternion.identity);
 			newDrop.GetComponent<Rigidbody>().mass = PlayerPrefs.GetFloat("DropMass");
