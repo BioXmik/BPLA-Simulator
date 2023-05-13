@@ -15102,7 +15102,7 @@ MonoBehaviour:
     forceDownHover: 75
     sideMovementSpeed: 5
     movementForwardSpeed: 5
-    rotationAmount: 3
+    rotationAmount: 0.5
     tiltMovementSpeed: 0.1
     tiltNoMovementSpeed: 0.2
     wantedForwardTilt: 10
@@ -15153,7 +15153,7 @@ MonoBehaviour:
   movementForwardSpeed: 5
   wantedSideTilt: 10
   currentYRotation: 0
-  rotationAmount: 3
+  rotationAmount: 0.5
   tiltMovementSpeed: 0.1
   tiltNoMovementSpeed: 0.2
   wantedForwardTilt: 10
