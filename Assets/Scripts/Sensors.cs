@@ -117,6 +117,12 @@ public class Sensors : MonoBehaviour
 		}
     }
 	
+	private void OnTriggerEnter(Collider collision)
+	{
+		killSwitch = true;
+		GetComponent<battery>().consumption = 0f;
+	}
+	
 	public void killSwitchOnOff()
 	{
 		if (killSwitch)
