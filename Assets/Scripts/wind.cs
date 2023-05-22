@@ -9,9 +9,15 @@ public class wind : MonoBehaviour
 	public Rigidbody rbDrone;
 	public GameObject drone;
 	
+	public GameObject particle;
+	
 	void Start()
 	{
 		transform.rotation = Quaternion.Euler(0, PlayerPrefs.GetFloat("WindVector"), 0);
+		if (particle != null)
+		{
+			particle.transform.rotation = Quaternion.Euler(0, PlayerPrefs.GetFloat("WindVector"), 0);
+		}
 		speed = PlayerPrefs.GetFloat("ValueWind") * -1;
 	}
 	
