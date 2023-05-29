@@ -9,7 +9,6 @@ public class dropScript : MonoBehaviour
 		if (collision.gameObject.tag == "Wire")
 		{
 			GetComponent<Rigidbody>().isKinematic = true;
-			transform.position = new Vector3 (transform.position.x, transform.position.y - 0.5f, transform.position.z);
 		}
 	}
 }

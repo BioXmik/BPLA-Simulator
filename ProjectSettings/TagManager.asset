@@ -8,6 +8,7 @@ TagManager:
   - Wire
   - AnimatedGO
   - tree
+  - NoTriggerDron
   layers:
   - Default
   - TransparentFX
