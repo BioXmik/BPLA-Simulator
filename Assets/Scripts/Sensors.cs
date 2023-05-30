@@ -119,7 +119,7 @@ public class Sensors : MonoBehaviour
 	
 	private void OnTriggerEnter(Collider collision)
 	{
-		if (collision.gameObject.tag != "NoTriggerDron")
+		if (collision.gameObject.tag != "NoTriggerDron" && collision.gameObject.tag != "Drop")
 		{
 			killSwitch = true;
 			GetComponent<battery>().consumption = 0f;

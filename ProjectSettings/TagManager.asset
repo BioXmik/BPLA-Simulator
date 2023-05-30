@@ -9,6 +9,7 @@ TagManager:
   - AnimatedGO
   - tree
   - NoTriggerDron
+  - Drop
   layers:
   - Default
   - TransparentFX

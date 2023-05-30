@@ -30,8 +30,8 @@ public class cameraMode : MonoBehaviour
 		
 		if (camMode == 1)
 		{
-			cam[1].transform.position = new Vector3 (drone.position.x, drone.position.y, drone.position.z);
-			cam[1].transform.rotation = Quaternion.Euler(drone.rotation.x + 40, drone.rotation.y, drone.rotation.z);
+			cam[1].transform.position = new Vector3 (drone.position.x, drone.position.y - 0.25f, drone.position.z);
+			cam[1].transform.rotation = Quaternion.Euler(drone.eulerAngles.x + 40, drone.eulerAngles.y, drone.eulerAngles.z);
 		}
 	}
 }
