@@ -8,6 +8,8 @@ public class drop : MonoBehaviour
 	public GameObject cargo;
 	public GameObject dropCargo;
 	public GameObject takeDrop;
+	private GameObject newTakeDrop;
+	public Transform takeDropContent;
 	
 	public void TakeDropOnOff()
 	{
@@ -15,12 +17,13 @@ public class drop : MonoBehaviour
 		{
 			cargoIsDroped = true;
 			cargo.SetActive(false);
-			takeDrop.SetActive(true);
+			newTakeDrop = Instantiate(takeDrop, takeDropContent);
+			newTakeDrop.SetActive(true);
 		}
 		else
 		{
 			cargoIsDroped = false;
-			takeDrop.SetActive(false);
+			Destroy(newTakeDrop);
 			cargo.SetActive(true);
 		}
 	}
