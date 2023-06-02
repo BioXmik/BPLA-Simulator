@@ -15,6 +15,7 @@ public class menuManager : MonoBehaviour
 	public Dropdown mode;
 	public Dropdown postsMode;
 	public Dropdown exercises;
+	public Toggle changingSpeedAndDirectionWind;
 	
 	public Slider windVector;
 	public Slider valueWind;
@@ -56,6 +57,7 @@ public class menuManager : MonoBehaviour
 		PlayerPrefs.SetFloat("WindVector", windVector.value);
 		PlayerPrefs.SetFloat("ValueWind", valueWind.value);
 		PlayerPrefs.SetFloat("Exercises", valueWind.value);
+		PlayerPrefs.SetString("ChangingSpeedAndDirectionWind", changingSpeedAndDirectionWind.isOn.ToString());
 		SceneManager.LoadScene(scenes[sceneDropdown.value]);
 	}
 }
