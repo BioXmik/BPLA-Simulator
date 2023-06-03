@@ -30043,11 +30043,11 @@ MonoBehaviour:
     wantedForwardTilt: 15
     wantedSideTilt: 15
     droneSoundAmplifier: 0.7
-  inputEditorSelection: 1
+  inputEditorSelection: 2
   idle: 1
   animatedGameObject: {fileID: 7937295499287885935}
   mobile_turned_on: 0
-  joystick_turned_on: 0
+  joystick_turned_on: 1
   mainCamera: {fileID: 0}
   droneObject: {fileID: 8033816873605881685}
   velocity: 0.0000036725544
@@ -30068,13 +30068,13 @@ MonoBehaviour:
   wantedForwardTilt: 5
   ourDrone: {fileID: 0}
   FlightRecorderOverride: 0
-  left_analog_x: Left_X
-  left_analog_y: Left_Y
-  right_analog_x: Right_X
-  right_analog_y: Right_Y
+  left_analog_x: Horizontal
+  left_analog_y: Vertical
+  right_analog_x: Rotation
+  right_analog_y: Upward
   downButton: 334
   upButton: 335
-  analogUpDownMovement: 0
+  analogUpDownMovement: 1
   left_analog_y_movement: 1
   left_analog_x_movement: 2
   right_analog_y_movement: 3
@@ -30215,7 +30215,6 @@ MonoBehaviour:
   cargo: {fileID: 922739426366146133, guid: 837d5c9af4768a840a91ae5dc91dbdf9, type: 3}
   dropCargo: {fileID: 922739426366146133, guid: 837d5c9af4768a840a91ae5dc91dbdf9, type: 3}
   takeDrop: {fileID: 8213789651806861087}
-  posTakeDrop: {x: 0.1, y: -0.4, z: 0}
   takeDropContent: {fileID: 8033321889701681991}
 --- !u!1 &8031855439860650359
 GameObject:

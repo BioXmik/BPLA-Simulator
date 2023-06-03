@@ -50,9 +50,14 @@ public class Sensors : MonoBehaviour
 	
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.P))
+		if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.JoystickButton1))
 		{
 			SceneManager.LoadScene("Menu");
+		}
+			
+		if (Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.JoystickButton2))
+		{
+			killSwitchOnOff();
 		}
 			
 		if (modeText != null)

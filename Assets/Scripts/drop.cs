@@ -11,6 +11,19 @@ public class drop : MonoBehaviour
 	private GameObject newTakeDrop;
 	public Transform takeDropContent;
 	
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.JoystickButton3))
+		{
+			DropCargo();
+		}
+		
+		if (Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.JoystickButton4))
+		{
+			TakeDropOnOff();
+		}
+	}
+	
 	public void TakeDropOnOff()
 	{
 		if (!cargoIsDroped)

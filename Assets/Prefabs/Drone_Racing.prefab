@@ -15192,11 +15192,11 @@ MonoBehaviour:
     wantedForwardTilt: 15
     wantedSideTilt: 15
     droneSoundAmplifier: 0.7
-  inputEditorSelection: 1
+  inputEditorSelection: 2
   idle: 1
   animatedGameObject: {fileID: 8671031215984204547}
   mobile_turned_on: 0
-  joystick_turned_on: 0
+  joystick_turned_on: 1
   mainCamera: {fileID: 0}
   droneObject: {fileID: 8723077897365158969}
   velocity: 0.0000036725544
@@ -15364,7 +15364,6 @@ MonoBehaviour:
   cargo: {fileID: 2918350240992569038}
   dropCargo: {fileID: 922739426366146133, guid: 837d5c9af4768a840a91ae5dc91dbdf9, type: 3}
   takeDrop: {fileID: 3018195726603842204}
-  posTakeDrop: {x: 0, y: -0.25, z: 0}
   takeDropContent: {fileID: 8723287152850008107}
 --- !u!1 &8720553511562867227
 GameObject:
