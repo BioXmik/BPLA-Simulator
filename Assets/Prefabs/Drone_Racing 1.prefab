@@ -30212,7 +30212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cargoIsDroped: 0
-  cargo: {fileID: 922739426366146133, guid: 837d5c9af4768a840a91ae5dc91dbdf9, type: 3}
+  cargo: {fileID: 7438817162476193873}
   dropCargo: {fileID: 922739426366146133, guid: 837d5c9af4768a840a91ae5dc91dbdf9, type: 3}
   takeDrop: {fileID: 8213789651806861087}
   takeDropContent: {fileID: 8033321889701681991}
@@ -40295,6 +40295,11 @@ PrefabInstance:
 --- !u!4 &1713531245175270033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4897391649653858753, guid: c8487a011189f114aa47629f63c337d7, type: 3}
+  m_PrefabInstance: {fileID: 6066533780013796176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7438817162476193873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3678126563793584897, guid: c8487a011189f114aa47629f63c337d7, type: 3}
   m_PrefabInstance: {fileID: 6066533780013796176}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9016109223581560712

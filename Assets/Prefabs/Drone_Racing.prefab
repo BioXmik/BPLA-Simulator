@@ -15217,13 +15217,13 @@ MonoBehaviour:
   wantedForwardTilt: 5
   ourDrone: {fileID: 0}
   FlightRecorderOverride: 0
-  left_analog_x: Left_X
-  left_analog_y: Left_Y
-  right_analog_x: Right_X
-  right_analog_y: Right_Y
+  left_analog_x: Horizontal
+  left_analog_y: Vertical
+  right_analog_x: Rotation
+  right_analog_y: Upward
   downButton: 334
   upButton: 335
-  analogUpDownMovement: 0
+  analogUpDownMovement: 1
   left_analog_y_movement: 1
   left_analog_x_movement: 2
   right_analog_y_movement: 3
@@ -15365,6 +15365,7 @@ MonoBehaviour:
   dropCargo: {fileID: 922739426366146133, guid: 837d5c9af4768a840a91ae5dc91dbdf9, type: 3}
   takeDrop: {fileID: 3018195726603842204}
   takeDropContent: {fileID: 8723287152850008107}
+  takeDropPos: {fileID: 6376045150288004110}
 --- !u!1 &8720553511562867227
 GameObject:
   m_ObjectHideFlags: 0

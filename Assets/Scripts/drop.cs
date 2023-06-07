@@ -52,7 +52,7 @@ public class drop : MonoBehaviour
 		{
 			cargoIsDroped = true;
 			cargo.SetActive(false);
-			GameObject newDrop = Instantiate(dropCargo, new Vector3(transform.position.x, transform.position.y -0.5f, transform.position.z), transform.rotation);
+			GameObject newDrop = Instantiate(dropCargo, cargo.transform.position, transform.rotation);
 			newDrop.GetComponent<Rigidbody>().mass = PlayerPrefs.GetFloat("DropMass");
 			yield return new WaitForSeconds (2f);
 			cargoIsDroped = false;
