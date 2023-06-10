@@ -35,7 +35,7 @@ public class wind : MonoBehaviour
 	{
 		if (!sensors.killSwitch && sensors.earthDistance > 4f)
 		{
-				drone.transform.position += transform.forward * speed / 100;
+			drone.transform.position += transform.forward * speed / 100;
 		}
     }
 	
