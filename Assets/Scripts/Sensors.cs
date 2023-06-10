@@ -34,6 +34,9 @@ public class Sensors : MonoBehaviour
 	public string mode;
 	public Text modeText;
 	
+	public float earthDistance;
+	private Terrain terrain;
+	
 	void Start()
 	{
 		rigidbody = GetComponent<Rigidbody>();
@@ -41,6 +44,7 @@ public class Sensors : MonoBehaviour
 		oldPos = transform.position;
 		home = transform.position;
 		killSwitchText.text = "Kill Switch: " + killSwitch.ToString();
+		terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<Terrain>();
 		
 		if (PlayerPrefs.GetInt("Mode") == 0) {mode = "stab";}
 		if (PlayerPrefs.GetInt("Mode") == 1) {mode = "althold";}
@@ -50,11 +54,15 @@ public class Sensors : MonoBehaviour
 	
     void Update()
     {
+		earthDistance = transform.position.y - terrain.SampleHeight(transform.position);
+		
+		//Выход в меню
 		if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.JoystickButton1))
 		{
 			SceneManager.LoadScene("Menu");
 		}
 			
+		//Включение и выключение KillSwith
 		if (Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.JoystickButton2))
 		{
 			killSwitchOnOff();
@@ -118,7 +126,7 @@ public class Sensors : MonoBehaviour
 		
 		if (height != null)
 		{
-			height.text = Math.Round(transform.position.y, 3).ToString() + " m";
+			height.text = Math.Round(earthDistance, 2).ToString() + " m";
 		}
     }
 	

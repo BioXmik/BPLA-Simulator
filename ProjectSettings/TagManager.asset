@@ -10,6 +10,7 @@ TagManager:
   - tree
   - NoTriggerDron
   - Drop
+  - Terrain
   layers:
   - Default
   - TransparentFX

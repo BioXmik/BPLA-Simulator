@@ -15153,13 +15153,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _profileIndex: 0
   profiles:
-  - maxForwardSpeed: 8
+  - maxForwardSpeed: 10
     maxSidewaySpeed: 5
     slowDownTime: 0.5
     forceUpHover: 175
     forceDownHover: 75
-    sideMovementSpeed: 5
-    movementForwardSpeed: 5
+    sideMovementSpeed: 25
+    movementForwardSpeed: 25
     rotationAmount: 0.5
     tiltMovementSpeed: 0.1
     tiltNoMovementSpeed: 0.2
@@ -15200,15 +15200,15 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   droneObject: {fileID: 8723077897365158969}
   velocity: 0.0000036725544
-  maxForwardSpeed: 8
+  maxForwardSpeed: 10
   maxSidewaySpeed: 5
   slowDownTime: 0.5
   droneSoundAmplifier: 0.5
   upForce: 98.100006
   forceUpHover: 175
   forceDownHover: 75
-  sideMovementAmount: 5
-  movementForwardSpeed: 5
+  sideMovementAmount: 25
+  movementForwardSpeed: 25
   wantedSideTilt: 5
   currentYRotation: 0
   rotationAmount: 0.5
@@ -15365,7 +15365,6 @@ MonoBehaviour:
   dropCargo: {fileID: 922739426366146133, guid: 837d5c9af4768a840a91ae5dc91dbdf9, type: 3}
   takeDrop: {fileID: 3018195726603842204}
   takeDropContent: {fileID: 8723287152850008107}
-  takeDropPos: {fileID: 6376045150288004110}
 --- !u!1 &8720553511562867227
 GameObject:
   m_ObjectHideFlags: 0

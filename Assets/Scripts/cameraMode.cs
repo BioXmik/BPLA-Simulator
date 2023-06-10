@@ -20,6 +20,7 @@ public class cameraMode : MonoBehaviour
 	
 	public void Update()
 	{
+		//Смена камеры
 		if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton5))
 		{
 			cam[camMode].SetActive(false);

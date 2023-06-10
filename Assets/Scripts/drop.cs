@@ -13,11 +13,13 @@ public class drop : MonoBehaviour
 	
 	void Update()
 	{
+		//Сброс груза
 		if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.JoystickButton3))
 		{
 			DropCargo();
 		}
 		
+		//Активация эвакуационного фала
 		if (Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.JoystickButton4))
 		{
 			TakeDropOnOff();
@@ -26,19 +28,19 @@ public class drop : MonoBehaviour
 	
 	public void TakeDropOnOff()
 	{
-		if (!cargoIsDroped)
-		{
-			cargoIsDroped = true;
-			cargo.SetActive(false);
-			newTakeDrop = Instantiate(takeDrop, takeDropContent);
-			newTakeDrop.SetActive(true);
-		}
-		else
-		{
-			cargoIsDroped = false;
-			Destroy(newTakeDrop);
-			cargo.SetActive(true);
-		}
+			if (!cargoIsDroped && GetComponent<Sensors>().earthDistance > 4f)
+			{
+				cargoIsDroped = true;
+				cargo.SetActive(false);
+				newTakeDrop = Instantiate(takeDrop, takeDropContent);
+				newTakeDrop.SetActive(true);
+			}
+			else
+			{
+				cargoIsDroped = false;
+				Destroy(newTakeDrop);
+				cargo.SetActive(true);
+			}
 	}
 	
 	public void DropCargo()

@@ -10,6 +10,7 @@ public class wind : MonoBehaviour
 	
 	public Rigidbody rbDrone;
 	public GameObject drone;
+	public Sensors sensors;
 	
 	public GameObject particle;
 	
@@ -30,11 +31,11 @@ public class wind : MonoBehaviour
 		}
 	}
 	
-    public void WindVelocity()
+    void FixedUpdate()
 	{
-		if (drone.GetComponent<Sensors>().mode != "auto" && drone.GetComponent<Sensors>().mode != "loiter" && drone.GetComponent<Sensors>().mode != "althold")
+		if (!sensors.killSwitch && sensors.earthDistance > 4f)
 		{
-			drone.transform.position += transform.forward * speed;
+				drone.transform.position += transform.forward * speed / 100;
 		}
     }
 	
