@@ -30068,10 +30068,10 @@ MonoBehaviour:
   wantedForwardTilt: 5
   ourDrone: {fileID: 0}
   FlightRecorderOverride: 0
-  left_analog_x: Horizontal
-  left_analog_y: Vertical
-  right_analog_x: Rotation
-  right_analog_y: Upward
+  left_analog_x: Roll
+  left_analog_y: Pitch
+  right_analog_x: Yaw
+  right_analog_y: Throttle
   downButton: 334
   upButton: 335
   analogUpDownMovement: 1
@@ -30175,6 +30175,7 @@ MonoBehaviour:
   killSwitchText: {fileID: 4033884560782231740}
   mode: 
   modeText: {fileID: 9221932668747980062}
+  earthDistance: 0
 --- !u!114 &7990530267269749251
 MonoBehaviour:
   m_ObjectHideFlags: 0
