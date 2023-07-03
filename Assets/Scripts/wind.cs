@@ -19,7 +19,6 @@ public class wind : MonoBehaviour
 		windVector = PlayerPrefs.GetFloat("WindVector");
 		speed = PlayerPrefs.GetFloat("ValueWind") * -1;
 		thisSpeed = PlayerPrefs.GetFloat("ValueWind") * -1;
-		Debug.Log(PlayerPrefs.GetString("ChangingSpeedAndDirectionWind"));
 		if (PlayerPrefs.GetString("ChangingSpeedAndDirectionWind") == "False")
 		{
 			StartCoroutine(EditDirectionAndSpeed());
@@ -33,7 +32,7 @@ public class wind : MonoBehaviour
 	
     void FixedUpdate()
 	{
-		if (!sensors.killSwitch && sensors.earthDistance > 4f)
+		if (!sensors.killSwitch && sensors.earthDistance > 3f)
 		{
 			drone.transform.position += transform.forward * speed / 100;
 		}

@@ -1,43 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO.Ports;
 
-public class droneController : MonoBehaviour
-{
-	public float speed = 2f;
-	
-	private InputControll _input;
-	private Rigidbody rb;
-	
-	private void Awake()
-	{
-		_input  = new InputControll();
-	}
-	
-	private void OnEnable()
-	{
-		_input.Enable();
-	}
-	
-	private void OnDisable()
-	{
-		_input.Disable();
-	}
-	
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
+public class droneController : MonoBehaviour {
+
+    SerialPort serial;
+
+    void Start () {
+        serial = new SerialPort("COM3", 115200); // замените COM3 на имя порта, к которому подключен пульт
+        serial.ReadTimeout = 1000; // время ожидания ответа в миллисекундах
+        serial.Open();
     }
-	
-	void Update()
-	{
-		Vector3 direction = _input.Drone.Movement.ReadValue<Vector3>();
-		
-		Move(direction);
-	}
-	
-	private void Move(Vector3 direction)
-	{
-		transform.position += direction * speed * Time.deltaTime;
-	}
+
+    void Update () {
+        try {
+            string data = serial.ReadLine();
+            string[] values = data.Split(',');
+            float roll = float.Parse(values[0]);
+            float pitch = float.Parse(values[1]);
+            float yaw = float.Parse(values[2]);
+            float throttle = float.Parse(values[3]);
+
+            Vector3 movement = new Vector3(roll * 50f, throttle * 50f, pitch * 50f);
+            transform.Translate(movement * Time.deltaTime);
+
+            transform.Rotate(new Vector3(0f, yaw * 50f, 0f) * Time.deltaTime);
+        } catch (TimeoutException) {
+            // обработка ошибки таймаута
+        }
+    }
+
+    void OnApplicationQuit () {
+        serial.Close();
+    }
 }

@@ -30004,13 +30004,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _profileIndex: 0
   profiles:
-  - maxForwardSpeed: 10
-    maxSidewaySpeed: 5
+  - maxForwardSpeed: 16
+    maxSidewaySpeed: 8
     slowDownTime: 0.4
     forceUpHover: 175
     forceDownHover: 75
-    sideMovementSpeed: 25
-    movementForwardSpeed: 25
+    sideMovementSpeed: 40
+    movementForwardSpeed: 40
     rotationAmount: 0.5
     tiltMovementSpeed: 0.1
     tiltNoMovementSpeed: 0.2
@@ -30051,15 +30051,15 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   droneObject: {fileID: 8033816873605881685}
   velocity: 0.0000036725544
-  maxForwardSpeed: 10
-  maxSidewaySpeed: 5
+  maxForwardSpeed: 16
+  maxSidewaySpeed: 8
   slowDownTime: 0.4
   droneSoundAmplifier: 0.5
   upForce: 98.100006
   forceUpHover: 175
   forceDownHover: 75
-  sideMovementAmount: 25
-  movementForwardSpeed: 25
+  sideMovementAmount: 40
+  movementForwardSpeed: 40
   wantedSideTilt: 5
   currentYRotation: 0
   rotationAmount: 0.5
