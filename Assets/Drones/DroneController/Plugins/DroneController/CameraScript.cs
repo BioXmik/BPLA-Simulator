@@ -80,11 +80,6 @@ namespace DroneController
 
             #region MONO BEHAVIOUR METHODS
 
-            public virtual void Awake()
-            {
-                Drone_Pick_Initialization();
-            }
-
 			/*
             void FixedUpdate()
             {       
@@ -101,6 +96,11 @@ namespace DroneController
 			#endregion
 
 			#region PRIVATE METHODS
+
+            void Start()
+            {
+                Drone_Pick_Initialization();
+            }
 
 			/// <summary>
 			/// Checking the scene if there are multiple drones to control, to follow the currently selected one or the last found one, if not

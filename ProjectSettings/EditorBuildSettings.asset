@@ -6,22 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Menu/Menu.unity
     guid: adca4047e4f18954389a9e32377fb49b
   - enabled: 1
-    path: Assets/Scenes/Forest.unity
+    path: Assets/Scenes/Forest/Forest.unity
     guid: d3bd473985b5c6e4d8548c3c6c885ef2
   - enabled: 1
-    path: Assets/Scenes/Mountains.unity
+    path: Assets/Scenes/Mountains/Mountains.unity
     guid: c47a6b019723d894f935b00281d714d8
   - enabled: 1
-    path: Assets/Scenes/Winter forest.unity
+    path: Assets/Scenes/Winter forest/Winter forest.unity
     guid: b9e5245ff2ad0ad4180fab2c642285b1
   - enabled: 1
-    path: Assets/Scenes/Desert.unity
+    path: Assets/Scenes/Desert/Desert.unity
     guid: 9e6050d8c178ff4419cad7c2cd3e038b
   - enabled: 1
-    path: Assets/Scenes/Wires over the river.unity
+    path: Assets/Scenes/Wires over the river/Wires over the river.unity
     guid: 8c177189cbb63a64987c517e0fb6788c
   - enabled: 1
     path: Assets/Scenes/TestScene.unity

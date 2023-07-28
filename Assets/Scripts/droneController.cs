@@ -4,33 +4,39 @@ using System.IO.Ports;
 
 public class droneController : MonoBehaviour {
 
-    SerialPort serial;
+    private InputControl inputControl;
 
-    void Start () {
-        serial = new SerialPort("COM3", 115200); // замените COM3 на имя порта, к которому подключен пульт
-        serial.ReadTimeout = 1000; // время ожидания ответа в миллисекундах
-        serial.Open();
+    private void Awake()
+    {
+        inputControl = new InputControl();
+        inputControl.Drone.KillSwitch.performed += context => KillSwitch();
     }
 
-    void Update () {
-        try {
-            string data = serial.ReadLine();
-            string[] values = data.Split(',');
-            float roll = float.Parse(values[0]);
-            float pitch = float.Parse(values[1]);
-            float yaw = float.Parse(values[2]);
-            float throttle = float.Parse(values[3]);
-
-            Vector3 movement = new Vector3(roll * 50f, throttle * 50f, pitch * 50f);
-            transform.Translate(movement * Time.deltaTime);
-
-            transform.Rotate(new Vector3(0f, yaw * 50f, 0f) * Time.deltaTime);
-        } catch (TimeoutException) {
-            // обработка ошибки таймаута
-        }
+    private void OnEnable()
+    {
+        inputControl.Enable();
     }
 
-    void OnApplicationQuit () {
-        serial.Close();
+    private void OnDisable()
+    {
+        inputControl.Disable();
+    }
+
+    void Update()
+    {
+        Vector3 direction = inputControl.Drone.Move.ReadValue<Vector3>();
+
+        Move(direction);
+    }
+
+    private void Move(Vector3 newVector)
+    {
+        transform.position += newVector;
+        //Debug.Log(newVector);
+    }
+
+    void KillSwitch()
+    {
+        Debug.Log("KillSwitch");
     }
 }

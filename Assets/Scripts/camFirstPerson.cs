@@ -8,7 +8,7 @@ public class camFirstPerson : MonoBehaviour
 	
 	void Start()
 	{
-		drone = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+		drone = GameObject.Find("Null Rotation Object").GetComponent<Transform>();
 	}
 	
     void Update()

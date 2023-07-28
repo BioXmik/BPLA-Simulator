@@ -203,7 +203,7 @@ namespace DroneController
             private float tiltAmountSideways = 0;
             private float tiltVelocitySideways;
 
-            private float wantedYRotation;
+            public float wantedYRotation;
             private float rotationYVelocity;
 
             private float tiltAmountForward = 0;

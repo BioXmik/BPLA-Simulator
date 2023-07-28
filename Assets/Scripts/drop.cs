@@ -11,20 +11,24 @@ public class drop : MonoBehaviour
 	private GameObject newTakeDrop;
 	public Transform takeDropContent;
 	
-	void Update()
-	{
-		//Сброс груза
-		if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.JoystickButton3))
-		{
-			DropCargo();
-		}
-		
-		//Активация эвакуационного фала
-		if (Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.JoystickButton4))
-		{
-			TakeDropOnOff();
-		}
-	}
+	private InputControl inputControl;
+
+    private void Awake()
+    {
+        inputControl = new InputControl();
+		inputControl.Drone.DropCargo.performed += context => DropCargo();
+		inputControl.Drone.EvacuationCargo.performed += context => TakeDropOnOff();
+    }
+
+    private void OnEnable()
+    {
+        inputControl.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputControl.Disable();
+    }
 	
 	public void TakeDropOnOff()
 	{

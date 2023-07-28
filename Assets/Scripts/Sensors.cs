@@ -15,7 +15,6 @@ public class Sensors : MonoBehaviour
 	private Rigidbody rigidbody;
 	
 	public RectTransform lineGorizont;
-	public Transform rotationDron;
 	
 	private int timeS;
 	private int timeMin;
@@ -37,6 +36,29 @@ public class Sensors : MonoBehaviour
 	public float earthDistance;
 	private Terrain terrain;
 	
+	private InputControl inputControl;
+
+    private void Awake()
+    {
+        inputControl = new InputControl();
+        inputControl.Drone.KillSwitch.performed += context => killSwitchOnOff(false);
+		inputControl.Drone.KillSwitch.canceled += context => killSwitchOnOff(true);
+		inputControl.Drone.Menu.performed += context => OnMenu();
+		inputControl.Drone.Menu.canceled += context => OnMenu();
+		inputControl.Drone.EditMode.performed += context => EditMode();
+		inputControl.Drone.EditMode.canceled += context => EditMode();
+    }
+
+    private void OnEnable()
+    {
+        inputControl.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputControl.Disable();
+    }
+
 	void Start()
 	{
 		rigidbody = GetComponent<Rigidbody>();
@@ -47,27 +69,15 @@ public class Sensors : MonoBehaviour
 		terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<Terrain>();
 		
 		if (PlayerPrefs.GetInt("Mode") == 0) {mode = "stab";}
-		if (PlayerPrefs.GetInt("Mode") == 1) {mode = "althold";}
-		if (PlayerPrefs.GetInt("Mode") == 2) {mode = "loiter";}
-		if (PlayerPrefs.GetInt("Mode") == 3) {mode = "auto";}
+		else if (PlayerPrefs.GetInt("Mode") == 1) {mode = "althold";}
+		else if (PlayerPrefs.GetInt("Mode") == 2) {mode = "loiter";}
+		else if (PlayerPrefs.GetInt("Mode") == 3) {mode = "auto";}
 	}
 	
     void Update()
     {
 		earthDistance = transform.position.y - terrain.SampleHeight(transform.position);
 		
-		//Выход в меню
-		if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.JoystickButton1))
-		{
-			SceneManager.LoadScene("Menu");
-		}
-			
-		//Включение и выключение KillSwith
-		if (Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.JoystickButton2))
-		{
-			killSwitchOnOff();
-		}
-			
 		if (modeText != null)
 		{
 			modeText.text = "Mode: " + mode.ToString();
@@ -85,10 +95,16 @@ public class Sensors : MonoBehaviour
 			homeDistance.text = Math.Round(Vector3.Distance(transform.position, home), 2).ToString() + "m";
 		}
 		
-		if (lineGorizont != null && rotationDron != null)
+		if (lineGorizont != null)
 		{
-			lineGorizont.rotation = Quaternion.Euler(0, 0, rotationDron.localEulerAngles.z * 4);
-			lineGorizont.transform.position = new Vector2 (Screen.width / 2 + rotationDron.rotation.z * -1000, Screen.height / 2 + rotationDron.rotation.x * 1000);
+			float rotationZ = transform.eulerAngles.z;
+			if (rotationZ > 180) {rotationZ -= 360;}
+
+			float rotationX = transform.eulerAngles.x;
+			if (rotationX > 180) {rotationX -= 360;}
+    		
+			lineGorizont.rotation = Quaternion.Euler(0, 0, rotationZ);
+			lineGorizont.transform.position = new Vector2 (Screen.width / 2 + rotationZ * -1, Screen.height / 2 + rotationX * 1);
 		}
 		
 		if (speedVertical != null)
@@ -138,21 +154,33 @@ public class Sensors : MonoBehaviour
 			GetComponent<battery>().consumption = 0f;
 		}
 	}
-	
-	public void killSwitchOnOff()
+
+	public void killSwitchOnOff(bool status)
 	{
+		killSwitch = status;
 		if (killSwitch)
 		{
-			killSwitch = false;
 			GetComponent<battery>().consumption = 21.2f;
 		}
 		else
 		{
-			killSwitch = true;
 			GetComponent<battery>().consumption = 0f;
 		}
 		GetComponent<battery>().consumptionText.text = GetComponent<battery>().consumption.ToString();
 		killSwitchText.text = "Kill Switch: " + killSwitch.ToString();
+	}
+
+	public void EditMode()
+	{
+		if (mode == "stab") {mode = "althold";}
+		else if (mode == "althold") {mode = "loiter";}
+		else if (mode == "loiter") {mode = "auto";}
+		else if (mode == "auto") {mode = "stab";}
+	}
+
+	public void OnMenu()
+	{
+		SceneManager.LoadScene("Menu");
 	}
 	
 	public IEnumerator AddTime()

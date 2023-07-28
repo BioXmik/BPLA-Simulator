@@ -18,7 +18,7 @@ public class DroneMovement : DroneMovementScript {
 
     void FixedUpdate()
     {
-		if (batteryScript.energy > 0 && !sensorsScript.killSwitch)
+		if (batteryScript.energy > 0)
 		{
 			GetVelocity();
 			ClampingSpeedValues();
@@ -35,7 +35,7 @@ public class DroneMovement : DroneMovementScript {
 	}
 
     void Update () {
-		if (batteryScript.energy > 0 && !sensorsScript.killSwitch)
+		if (batteryScript.energy > 0)
 		{
 			RotationUpdateLoop_TrickRotation(); //applies rotation to the drone it self when doing the barrel roll trick, does NOT trigger the animation
 			Animations(); //part where animations are triggered
