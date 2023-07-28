@@ -17,7 +17,8 @@ public class drop : MonoBehaviour
     {
         inputControl = new InputControl();
 		inputControl.Drone.DropCargo.performed += context => DropCargo();
-		inputControl.Drone.EvacuationCargo.performed += context => TakeDropOnOff();
+		inputControl.Drone.EvacuationCargo.performed += context => TakeDropOnOff(true);
+		inputControl.Drone.EvacuationCargo.canceled += context => TakeDropOnOff(false);
     }
 
     private void OnEnable()
@@ -30,9 +31,9 @@ public class drop : MonoBehaviour
         inputControl.Disable();
     }
 	
-	public void TakeDropOnOff()
+	public void TakeDropOnOff(bool status)
 	{
-			if (!cargoIsDroped && GetComponent<Sensors>().earthDistance > 4f)
+			if (status && !cargoIsDroped && GetComponent<Sensors>().earthDistance > 4f)
 			{
 				cargoIsDroped = true;
 				cargo.SetActive(false);

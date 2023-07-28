@@ -7,6 +7,7 @@ public class cameraMode : MonoBehaviour
 	private int camMode;
 	public GameObject[] cam;
 	private Transform drone;
+	private Transform droneBody;
 	
 	private InputControl inputControl;
 
@@ -35,20 +36,26 @@ public class cameraMode : MonoBehaviour
 	private void SetDrone()
 	{
 		drone = GameObject.Find("Null Rotation Object").GetComponent<Transform>();
+		droneBody = GameObject.FindGameObjectWithTag("Drone").GetComponent<Transform>();
 	}
 	
 	public void EditCam()
 	{
 		cam[camMode].SetActive(false);
 		camMode++;
-		if (camMode > 2) {camMode = 0;}
+		if (camMode > 3) {camMode = 0;}
 		cam[camMode].SetActive(true);
 		
 		if (camMode == 1)
 		{
 			float slider1 = inputControl.Drone.slider1.ReadValue<float>();
-			cam[1].transform.position = new Vector3 (drone.position.x, drone.position.y - 0.25f, drone.position.z);
-			cam[1].transform.rotation = Quaternion.Euler(drone.eulerAngles.x + 50 + slider1 * 30, drone.eulerAngles.y, drone.eulerAngles.z);
+			cam[1].transform.position = new Vector3 (droneBody.position.x, droneBody.position.y - 0.25f, droneBody.position.z);
+			cam[1].transform.rotation = Quaternion.Euler(droneBody.eulerAngles.x + 50 + slider1 * 30, droneBody.eulerAngles.y, droneBody.eulerAngles.z);
+		}
+		else if (camMode == 2)
+		{
+			cam[2].transform.position = new Vector3 (droneBody.position.x, droneBody.position.y - 0.25f, droneBody.position.z);
+			cam[2].transform.rotation = Quaternion.Euler(droneBody.eulerAngles.x, droneBody.eulerAngles.y, droneBody.eulerAngles.z);
 		}
 	}
 
@@ -57,8 +64,13 @@ public class cameraMode : MonoBehaviour
 		if (camMode == 1)
 		{
 			float slider1 = inputControl.Drone.slider1.ReadValue<float>();
-			cam[1].transform.position = new Vector3 (drone.position.x, drone.position.y - 0.25f, drone.position.z);
-			cam[1].transform.rotation = Quaternion.Euler(drone.eulerAngles.x + 50 + slider1 * 30, drone.eulerAngles.y, drone.eulerAngles.z);
+			cam[1].transform.position = new Vector3 (droneBody.position.x, droneBody.position.y - 0.25f, droneBody.position.z);
+			cam[1].transform.rotation = Quaternion.Euler(droneBody.eulerAngles.x + 50 + slider1 * 30, droneBody.eulerAngles.y, droneBody.eulerAngles.z);
+		}
+		else if (camMode == 2)
+		{
+			cam[2].transform.position = new Vector3 (droneBody.position.x, droneBody.position.y - 0.25f, droneBody.position.z);
+			cam[2].transform.rotation = Quaternion.Euler(droneBody.eulerAngles.x, droneBody.eulerAngles.y, droneBody.eulerAngles.z);
 		}
 	}
 }

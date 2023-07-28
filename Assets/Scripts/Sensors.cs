@@ -72,17 +72,20 @@ public class Sensors : MonoBehaviour
 		else if (PlayerPrefs.GetInt("Mode") == 1) {mode = "althold";}
 		else if (PlayerPrefs.GetInt("Mode") == 2) {mode = "loiter";}
 		else if (PlayerPrefs.GetInt("Mode") == 3) {mode = "auto";}
+		modeText.text = "Mode: " + mode.ToString();
 	}
 	
     void Update()
     {
 		earthDistance = transform.position.y - terrain.SampleHeight(transform.position);
 		
-		if (modeText != null)
+		if (!killSwitch && mode == "althold")
 		{
-			modeText.text = "Mode: " + mode.ToString();
+			Vector3 velocity = rigidbody.velocity;
+    		velocity.y = Mathf.Clamp(velocity.y, -2.15f, 9f);
+    		rigidbody.velocity = velocity;
 		}
-		
+
 		if (allDistanceText != null)
 		{
 			allDistance = allDistance + Math.Round(Vector3.Distance(transform.position, oldPos), 2);
@@ -150,21 +153,22 @@ public class Sensors : MonoBehaviour
 	{
 		if (collision.gameObject.tag != "NoTriggerDron" && collision.gameObject.tag != "Drop")
 		{
-			killSwitch = true;
-			GetComponent<battery>().consumption = 0f;
+			killSwitchOnOff(true);
 		}
 	}
 
 	public void killSwitchOnOff(bool status)
 	{
 		killSwitch = status;
-		if (killSwitch)
+		if (status)
 		{
-			GetComponent<battery>().consumption = 21.2f;
+			GetComponent<AudioSource>().volume = 0;
+			GetComponent<battery>().consumption = 0;
 		}
 		else
 		{
-			GetComponent<battery>().consumption = 0f;
+			GetComponent<AudioSource>().volume = 1;
+			GetComponent<battery>().consumption = 21.2f;
 		}
 		GetComponent<battery>().consumptionText.text = GetComponent<battery>().consumption.ToString();
 		killSwitchText.text = "Kill Switch: " + killSwitch.ToString();
@@ -176,6 +180,7 @@ public class Sensors : MonoBehaviour
 		else if (mode == "althold") {mode = "loiter";}
 		else if (mode == "loiter") {mode = "auto";}
 		else if (mode == "auto") {mode = "stab";}
+		modeText.text = "Mode: " + mode.ToString();
 	}
 
 	public void OnMenu()
