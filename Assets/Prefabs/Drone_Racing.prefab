@@ -423,6 +423,7 @@ MonoBehaviour:
   Mass: 0
   mainController: {fileID: 7975688749395682186}
   Propeller: {fileID: 8720133308718658473}
+  SpeedPropeller: 0
 --- !u!1 &7975688749388613710
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +480,7 @@ MonoBehaviour:
   Mass: 0
   mainController: {fileID: 7975688749395682186}
   Propeller: {fileID: 8720980292894430707}
+  SpeedPropeller: 0
 --- !u!1 &7975688749388620692
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +537,7 @@ MonoBehaviour:
   Mass: 0
   mainController: {fileID: 7975688749395682186}
   Propeller: {fileID: 8720464667615258101}
+  SpeedPropeller: 0
 --- !u!1 &7975688749388634954
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +594,7 @@ MonoBehaviour:
   Mass: 0
   mainController: {fileID: 7975688749395682186}
   Propeller: {fileID: 8720310820886101255}
+  SpeedPropeller: 0
 --- !u!1 &8685047700897902673
 GameObject:
   m_ObjectHideFlags: 0
@@ -15468,7 +15472,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 10
-  MaxDistance: 100
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -15503,7 +15507,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

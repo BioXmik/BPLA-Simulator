@@ -70,7 +70,7 @@ public class Controller : MonoBehaviour {
 			Pitch = slider2 / 6 + forwardBackward * (InvertPitch ? -1 : 1);
 			Roll = leftRight * (InvertRoll ? -1 : 1);
 
-			float[] powers = new float[] {Math.Abs(direction.y), Math.Abs(leftRight), Math.Abs(forwardBackward)};
+			float[] powers = new float[] {Math.Abs(direction.x), Math.Abs(direction.y), Math.Abs(leftRight), Math.Abs(forwardBackward)};
 			audioSource.pitch = 0.8f + powers.Max();
 		}
 	}
