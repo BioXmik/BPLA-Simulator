@@ -23,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wires over the river/Wires over the river.unity
     guid: 8c177189cbb63a64987c517e0fb6788c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}

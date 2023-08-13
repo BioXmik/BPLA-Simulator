@@ -63,11 +63,10 @@ public class Controller : MonoBehaviour {
 			Vector3 direction = inputControl.Drone.Move.ReadValue<Vector3>();
 			float forwardBackward = inputControl.Drone.ForwardBackward.ReadValue<float>();
 			float leftRight = inputControl.Drone.LeftRight.ReadValue<float>();
-			float slider2 = inputControl.Drone.slider2.ReadValue<float>();
 
 			Throttle = direction.y * (InvertThrottle ? -1 : 1);
 			Yaw = direction.x * (InvertYaw ? -1 : 1);
-			Pitch = slider2 / 6 + forwardBackward * (InvertPitch ? -1 : 1);
+			Pitch = forwardBackward * (InvertPitch ? -1 : 1);
 			Roll = leftRight * (InvertRoll ? -1 : 1);
 
 			float[] powers = new float[] {Math.Abs(direction.x), Math.Abs(direction.y), Math.Abs(leftRight), Math.Abs(forwardBackward)};

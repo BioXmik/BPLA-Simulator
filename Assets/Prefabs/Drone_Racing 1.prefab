@@ -30174,11 +30174,11 @@ MonoBehaviour:
     iFactor: 0.1
     dFactor: 0.05
   PidPitch:
-    pFactor: 0.5
+    pFactor: 1
     iFactor: 5
     dFactor: 0.05
   PidRoll:
-    pFactor: 0.5
+    pFactor: 1
     iFactor: 5
     dFactor: 0.05
   Gyro:
@@ -40300,6 +40300,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8025989940334895001}
     m_Modifications:
+    - target: {fileID: 302129675338514796, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 302129675338514796, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 302129675338514796, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7990530267269749250}
+    - target: {fileID: 302129675338514796, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 302129675338514796, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Cam3OnOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 302129675338514796, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Sensors, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 302129675338514796, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1327720786231044448, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -40387,6 +40415,10 @@ PrefabInstance:
     - target: {fileID: 1327720786231044452, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731561266699009253, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}
+      propertyPath: m_Name
+      value: Cam3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2b89d6ff1d6e04a99f80d42f258ae5, type: 3}

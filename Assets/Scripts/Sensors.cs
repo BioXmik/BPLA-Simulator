@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using PathCreation.Examples;
 
 public class Sensors : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class Sensors : MonoBehaviour
 	public bool killSwitch;
 	public Text killSwitchText;
 	
+	private int modeInt;
 	public string mode;
 	public Text modeText;
 	
@@ -71,14 +73,13 @@ public class Sensors : MonoBehaviour
 		if (PlayerPrefs.GetInt("Mode") == 0) {mode = "stab";}
 		else if (PlayerPrefs.GetInt("Mode") == 1) {mode = "althold";}
 		else if (PlayerPrefs.GetInt("Mode") == 2) {mode = "loiter";}
-		else if (PlayerPrefs.GetInt("Mode") == 3) {mode = "auto";}
 		modeText.text = "Mode: " + mode.ToString();
 	}
 	
     void Update()
     {
 		earthDistance = transform.position.y - terrain.SampleHeight(transform.position);
-		
+
 		if (!killSwitch && mode == "althold")
 		{
 			Vector3 velocity = rigidbody.velocity;
@@ -148,10 +149,10 @@ public class Sensors : MonoBehaviour
 			height.text = Math.Round(earthDistance, 2).ToString() + " m";
 		}
     }
-	
+
 	private void OnTriggerEnter(Collider collision)
 	{
-		if (collision.gameObject.tag != "NoTriggerDron" && collision.gameObject.tag != "Drop")
+		if (collision.gameObject.tag != "NoTriggerDron" && collision.gameObject.tag != "Drop" && !GetComponent<PathFollower>())
 		{
 			killSwitchOnOff(true);
 		}
@@ -176,10 +177,11 @@ public class Sensors : MonoBehaviour
 
 	public void EditMode()
 	{
-		if (mode == "stab") {mode = "althold";}
-		else if (mode == "althold") {mode = "loiter";}
-		else if (mode == "loiter") {mode = "auto";}
-		else if (mode == "auto") {mode = "stab";}
+		modeInt++;
+		if (modeInt == 1) {mode = "althold";}
+		else if (modeInt == 2) {mode = "loiter";}
+		else if (modeInt == 3) {mode = "althold";}
+		else if (modeInt == 4) {modeInt = 0; mode = "stab";}
 		modeText.text = "Mode: " + mode.ToString();
 	}
 
@@ -188,6 +190,11 @@ public class Sensors : MonoBehaviour
 		SceneManager.LoadScene("Menu");
 	}
 	
+	public void Cam3OnOff()
+	{
+		GameObject.Find("Camera Mode Manager").GetComponent<cameraMode>().Cam3OnOff();
+	}
+
 	public IEnumerator AddTime()
 	{
 		yield return new WaitForSeconds (1f);
