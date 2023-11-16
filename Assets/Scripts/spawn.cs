@@ -13,6 +13,7 @@ public class spawn : MonoBehaviour
     {
 		posts[PlayerPrefs.GetInt("PostsType")].SetActive(true);
         GameObject newDrone = Instantiate(drons[PlayerPrefs.GetInt("SelectDron")], spawnPoint, Quaternion.identity);
+		GameObject.Find("Camera First Person").GetComponent<camFirstPerson>().drone = newDrone.transform;
 		wind Wind = GameObject.FindGameObjectWithTag("Wind").GetComponent<wind>();
 		Wind.drone = newDrone;
 		Wind.sensors = newDrone.GetComponent<Sensors>();
